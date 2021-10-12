@@ -4,6 +4,6 @@ app = Flask(__name__)
 
 @app.route('/',methods=['GET'])
 def index():
-    thumbnail = img_list[0]
-    title = titles[0]
+    thumbnail = img_list
+    title = titles
     return render_template('index.html', thumbnail=thumbnail,title=title)

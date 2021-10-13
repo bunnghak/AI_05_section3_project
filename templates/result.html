@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <title>
+    Today's Video
+    </title>
+  </head>
+  <body>
+  <main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Today's Videos.</h1>
+        <p class="lead text-muted">search and recommand videos.</p>
+        <div class="container-fluid">
+          <form method="GET" action="/result">
+            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="keyword">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href=https://www.youtube.com/watch?v={{ id[0] }}><img src={{ thumbnail[0] }} class="card-img-top"></a>
+
+            <div class="card-body">
+              <p class="card-text">{{ title[0] }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href=https://www.youtube.com/watch?v={{ id[1] }}><img src={{ thumbnail[1] }} class="card-img-top"></a>
+
+            <div class="card-body">
+              <p class="card-text">{{ title[1] }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href=https://www.youtube.com/watch?v={{ id[2] }}><img src={{ thumbnail[2] }} class="card-img-top"></a>
+
+            <div class="card-body">
+              <p class="card-text">{{ title[2] }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href=https://www.youtube.com/watch?v={{ id[3] }}><img src={{ thumbnail[3] }} class="card-img-top"></a>
+
+            <div class="card-body">
+              <p class="card-text">{{ title[3] }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href=https://www.youtube.com/watch?v={{ id[4] }}><img src={{ thumbnail[4] }} class="card-img-top"></a>
+
+            <div class="card-body">
+              <p class="card-text">{{ title[4] }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+  </body>
+</html> vgt

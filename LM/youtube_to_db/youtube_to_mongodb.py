@@ -54,7 +54,7 @@ collection = database[COLLECTION_NAME]
 
 # insert mongodb
 def mongodb_insert(db):
-    collection.delete_many({})
+    #collection.delete_many({}) 
     post = collection.insert_many(db)
     return post
 

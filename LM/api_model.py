@@ -1,4 +1,4 @@
-from logging import ERROR
+from logging import ERROR, error
 import pandas as pd
 import sqlite3
 import os
@@ -110,7 +110,7 @@ def search_from_api(search_url):
     num = 0
     val = []
     for i in x_pred:
-        total = i
+        total = y-i
         val.append(total)
         num+=1
     df['total'] = val
@@ -125,7 +125,39 @@ def search_from_api(search_url):
             if i == data[0]['id']:
                 img_list.append(data[0]['snippet']['thumbnails']['medium']['url'])
 
-    top_5['img'] = img_list
+
+    # create log db
+    # log table set
+    try:
+        cur.execute("""
+        CREATE TABLE logs(
+            id VARCHAR(20) NOT NULL PRIMARY KEY,
+            viewCount INTEGER,
+            predictCount INTEGER
+            );
+        """)
+        conn.commit()
+    except:pass
+
+    #insert sqlite log
+
+    for data in df.iloc[:,1:].itertuples():
+        #각 테이블 별 쿼리 작성.
+        log = "INSERT INTO logs(id,viewCount,predictCount) VALUES (?,?,?);"
+         #라벨 중복 여부 체크 후 커밋
+        try:
+            log_list = cur.execute("SELECT id FROM logs;").fetchall()
+            log_data = data.id,data.viewCount,data.predict #insert data
+
+            if (data.id,) not in log_list:
+                cur.execute(log,log_data)
+                conn.commit()       
+        except KeyError:
+            continue
+
+    #to list for result
+
     titles = list(top_5['title'])
     id = list(id)
+
     return img_list,titles,id

@@ -4,7 +4,7 @@ import sqlite3
 import os
 import json
 import requests
-from AI_05_section3_project.LM.learning_machine import  model
+from LM.learning_machine import  model
 #youtube api
 api_key = 'AIzaSyD022uHitUxix21wfuhvOHbypjoKsyuOsA'
 chart = 'mostPopular'

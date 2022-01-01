@@ -44,7 +44,7 @@ items = get_youtube_data(search_url)
 
 HOST = 'cluster0.vfnqr.mongodb.net'
 USER = 'bunnghak'
-PASSWORD = '1234'
+PASSWORD = 'Crs7od49lY36ttkr'
 DATABASE_NAME = 'myFirstDatabase'
 COLLECTION_NAME = 'youtube_project'
 MONGO_URI = f"mongodb+srv://{USER}:{PASSWORD}@{HOST}/{DATABASE_NAME}?retryWrites=true&w=majority"
@@ -91,7 +91,6 @@ CREATE TABLE statistics(
     id VARCHAR(20) NOT NULL PRIMARY KEY,
     viewCount INTEGER,
     likeCount INTEGER,
-    dislikeCount INTEGER,
     favoriteCount INTEGER,
     commentCount INTEGER
     );
@@ -101,7 +100,7 @@ conn.commit()
 for data in youtube_list:
     #각 테이블 별 쿼리 작성.
     snippet = "INSERT INTO snippet(id,publishedAt,title,categoryId) VALUES (?,?,?,?);"
-    statistics = "INSERT INTO statistics(id,viewCount,likeCount,dislikeCount,favoriteCount,commentCount) VALUES (?,?,?,?,?,?);"
+    statistics = "INSERT INTO statistics(id,viewCount,likeCount,favoriteCount,commentCount) VALUES (?,?,?,?,?);"
     
     #라벨 중복 여부 체크 후 커밋
     try:
@@ -114,7 +113,7 @@ for data in youtube_list:
 
         #유저 중복 여부 체크 후 커밋
         stat_list = cur.execute("SELECT id FROM statistics;").fetchall()
-        stat_data = data['id'],data['statistics']['viewCount'],data['statistics']['likeCount'],data['statistics']['dislikeCount'],data['statistics']['favoriteCount'],data['statistics']['commentCount'] #insert data
+        stat_data = data['id'],data['statistics']['viewCount'],data['statistics']['likeCount'],data['statistics']['favoriteCount'],data['statistics']['commentCount'] #insert data
 
 
         if (data['id'],) not in stat_list:

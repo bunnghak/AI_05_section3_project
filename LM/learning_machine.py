@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 import os
-from LM.youtube_to_db.youtube_to_mongodb import  DB_FILEPATH
+from AI_05_section3_project.LM.youtube_to_db.youtube_to_mongodb import DB_FILEPATH
 
 #load data
 conn = sqlite3.connect(DB_FILEPATH)

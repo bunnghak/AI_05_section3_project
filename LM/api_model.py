@@ -4,7 +4,7 @@ import sqlite3
 import os
 import json
 import requests
-from LM.learning_machine import  model
+from AI_05_section3_project.LM.learning_machine import model
 #youtube api
 api_key = 'AIzaSyD022uHitUxix21wfuhvOHbypjoKsyuOsA'
 chart = 'mostPopular'
@@ -59,7 +59,6 @@ def search_from_api(search_url):
         id VARCHAR(20) NOT NULL PRIMARY KEY,
         viewCount INTEGER,
         likeCount INTEGER,
-        dislikeCount INTEGER,
         favoriteCount INTEGER,
         commentCount INTEGER
         );
@@ -71,7 +70,7 @@ def search_from_api(search_url):
     for data in data_stat:
         #각 테이블 별 쿼리 작성.
         snippet = "INSERT INTO snippet(id,publishedAt,title,categoryId) VALUES (?,?,?,?);"
-        statistics = "INSERT INTO statistics(id,viewCount,likeCount,dislikeCount,favoriteCount,commentCount) VALUES (?,?,?,?,?,?);"
+        statistics = "INSERT INTO statistics(id,viewCount,likeCount,favoriteCount,commentCount) VALUES (?,?,?,?,?);"
 
         #라벨 중복 여부 체크 후 커밋
         try:
@@ -84,7 +83,7 @@ def search_from_api(search_url):
 
             #유저 중복 여부 체크 후 커밋
             stat_list = cur.execute("SELECT id FROM statistics;").fetchall()
-            stat_data = data[0]['id'],data[0]['statistics']['viewCount'],data[0]['statistics']['likeCount'],data[0]['statistics']['dislikeCount'],data[0]['statistics']['favoriteCount'],data[0]['statistics']['commentCount'] #insert data
+            stat_data = data[0]['id'],data[0]['statistics']['viewCount'],data[0]['statistics']['likeCount'],data[0]['statistics']['favoriteCount'],data[0]['statistics']['commentCount'] #insert data
 
 
             if (data[0]['id'],) not in stat_list:
